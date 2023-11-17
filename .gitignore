@@ -1,0 +1,7 @@
+*.exe
+*modele?/.exe
+*c code/module?/.exe
+*c++ code/module?/.exe
+practice.c
+.cph
+
