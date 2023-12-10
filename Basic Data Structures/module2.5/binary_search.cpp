@@ -25,9 +25,9 @@ int main()
     //     if(flag==true) cout<<"found"<<endl;
     //     else cout<<"not found"<< endl;
     // }
- 
- 
- 
+
+
+
     int n,q;
     cin>>n>>q;
     int a[n];
@@ -36,7 +36,7 @@ int main()
         cin>>a[i];
     }
     sort(a,a+n);
- 
+
     while(q--)  //O(N)  10^5
     {
         int x;
@@ -51,7 +51,7 @@ int main()
         //     }
         // }
         int l=0,r=n-1;
- 
+
         // binary search
         while(l<=r)
         {   
@@ -61,9 +61,9 @@ int main()
             {
                 flag=true;
                 break;
- 
+
             }
-            if(a[mid]<x)
+            if(a[mid]>x)
             {
                 l=mid+1;
             }
@@ -72,11 +72,11 @@ int main()
                 r=mid-1;
             }
         }
- 
- 
+
+
         if(flag==true) cout<<"found"<<endl;
         else cout<<"not found"<< endl;
     }
- 
+
     return 0;
 }
