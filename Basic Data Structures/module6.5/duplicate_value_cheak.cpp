@@ -17,7 +17,7 @@ void insert_at_tail(Node * &head, int v)  //insert tail link list
     if(head==NULL)
     {
         head = newNode;
-        return;
+        return; 
     }
     Node* tmp = head;
     while(tmp->next != NULL)
@@ -27,10 +27,10 @@ void insert_at_tail(Node * &head, int v)  //insert tail link list
     tmp->next = newNode;
  
 }
-// void duplicate_value_cheak(Node * &head)   aita swap er jonno bebohar korcilam
+// void duplicate_value_cheak(Node * &head)   //aita swap er jonno bebohar korcilam
 // {
 //     Node * tmp = head;
-//     while(tmp->next!=NULL)
+//     while(tmp->next!=NULL)             //accending order e sort korar function;
 //     {   
 //         Node * stmp=tmp->next;
 //         while(stmp!=NULL)
@@ -39,13 +39,10 @@ void insert_at_tail(Node * &head, int v)  //insert tail link list
 //             // cout<<stmp->val<<endl;
 //             if(tmp->val>stmp->val)
 //             {
-//                 Node* sp = tmp->next;
-//                 tmp->next=tmp->next->next;
-//                 tmp=sp;
+//                 swap(tmp->val,stmp->val);
 //             }
 //             stmp= stmp->next;
 //         }
-//         stmp=tmp->next;
 
 //         tmp=tmp->next;
         
