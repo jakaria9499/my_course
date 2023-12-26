@@ -24,39 +24,19 @@ void input(Node * &head, Node * & tail, int val)
     tail = newNode;
 
 }
-int max(Node * head)
+void print(Node * head)
 {
-    Node * tmp = head;
-    int maximum= INT_MIN;
+    Node * tmp= head;
     while(tmp!=NULL)
     {
-        if(tmp->val>maximum)
+        if(tmp->val!=-2)
         {
-            maximum= tmp->val;
+            cout<<tmp->val<< " ";
         }
-
         tmp= tmp->next;
     }
-    return maximum;
+    cout<<endl;
 }
-int min(Node * head)
-{
-    Node * tmp=head;
-    int minimum=INT_MAX;
-    while(tmp->next!=NULL)
-    {
-        if(tmp->val<minimum)
-        {
-            minimum=tmp->val;
-        }
-
-        tmp=tmp->next;
-    }
-    return minimum;
-
-}
-
-
 int main()
 {
     Node * head = NULL;
@@ -67,18 +47,25 @@ int main()
         cin>> val;
         if(val==-1) break;
         input(head,tail, val);
-    }  
+    } 
 
-    if(head->next==NULL)
-    {
-        cout<< "0"<<endl;
-    }
-    else
-    {
-        cout<<max(head)-min(head)<< endl;
+    for (Node* i = head; i->next!=NULL; i=i->next)
+    {   
+        for (Node* j = i->next; j!=NULL; j=j->next)
+        {
+            if(i->val!=-2)
+            {
+                if(i->val==j->val)
+                {
+                    j->val=-2;
+                }
+            }
+    
+        }
+        
     }
 
     
-
+print(head);
     return 0;
 }
