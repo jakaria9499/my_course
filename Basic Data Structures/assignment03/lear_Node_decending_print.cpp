@@ -47,30 +47,24 @@ Node* input_tree()
     }
     return root;
 }
-void left(Node * root)
+vector<int> v;
+void leaf_decending_print(Node * root)
 {
     if(root==NULL) return;
-    if(root->left) left(root->left);
-    else if(root->right) left(root->right);
-    cout<<root->val<<" ";
-}
-void right(Node * root)
-{
-    if(root==NULL) return;
-    cout<<root->val<<" ";
-    if(root->right) right(root->right);
-    else if(root->left) right(root->left);
+    if(root->left==NULL && root->right==NULL) v.push_back(root->val);
+    leaf_decending_print(root->left);
+    leaf_decending_print(root->right);
 }
 int main()
 {
-
-    Node * root = input_tree();
-    if(root==NULL) return 0;
-    if(root->left) left(root->left);
-    if(root) cout<<root->val<<" ";
-    if(root->right) right(root->right);
-
-    
+    Node* root = input_tree();
+    leaf_decending_print(root);
+    sort(v.begin(),v.end());
+    while(!v.empty())
+    {
+        cout<<v.back()<<" ";
+        v.pop_back();
+    }
 
     return 0;
 }

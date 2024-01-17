@@ -47,30 +47,31 @@ Node* input_tree()
     }
     return root;
 }
-void left(Node * root)
-{
-    if(root==NULL) return;
-    if(root->left) left(root->left);
-    else if(root->right) left(root->right);
-    cout<<root->val<<" ";
-}
-void right(Node * root)
-{
-    if(root==NULL) return;
-    cout<<root->val<<" ";
-    if(root->right) right(root->right);
-    else if(root->left) right(root->left);
-}
 int main()
 {
+    Node* root = input_tree();
+    queue<pair<Node*,int> > q;
+    int x;
+    cin>>x;
+    bool flag = false;
+    if(root) q.push({root,0});
+    while(!q.empty())
+    {
+        pair<Node*,int> p = q.front();
+        Node* node = p.first;
+        int level = p.second;
+        q.pop();
+        
+        if(level==x)
+        {
+            cout<< node->val<<" ";
+            flag=true;
+        }
 
-    Node * root = input_tree();
-    if(root==NULL) return 0;
-    if(root->left) left(root->left);
-    if(root) cout<<root->val<<" ";
-    if(root->right) right(root->right);
 
-    
-
+        if(node->left) q.push({node->left, level+1});
+        if(node->right) q.push({node->right, level+1});
+    }
+    if(flag==false) cout<<"Invalid"<<endl;
     return 0;
 }

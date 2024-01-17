@@ -47,30 +47,22 @@ Node* input_tree()
     }
     return root;
 }
-void left(Node * root)
+
+void sum_without_leaf(Node * root,int &sum)
 {
     if(root==NULL) return;
-    if(root->left) left(root->left);
-    else if(root->right) left(root->right);
-    cout<<root->val<<" ";
-}
-void right(Node * root)
-{
-    if(root==NULL) return;
-    cout<<root->val<<" ";
-    if(root->right) right(root->right);
-    else if(root->left) right(root->left);
+    if(root->left==NULL && root->right==NULL) return;
+    sum = sum+root->val;
+    sum_without_leaf(root->left,sum);
+    sum_without_leaf(root->right,sum);
+
 }
 int main()
 {
-
-    Node * root = input_tree();
-    if(root==NULL) return 0;
-    if(root->left) left(root->left);
-    if(root) cout<<root->val<<" ";
-    if(root->right) right(root->right);
-
-    
+    int sum = 0;
+    Node* root = input_tree();
+    sum_without_leaf(root,sum);
+    cout<<sum<<endl;
 
     return 0;
 }

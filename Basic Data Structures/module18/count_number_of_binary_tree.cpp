@@ -16,29 +16,32 @@ class Node
 Node* input_tree()
 {
     int val;
-    cin>>val;
+    cin>> val;
     Node * root;
-    if(val==-1) root=NULL;
+    if(val == -1) root=NULL;
     else root=new Node(val);
-
     queue<Node*> q;
     if(root) q.push(root);
     while(!q.empty())
-    {   
-        Node* p = q.front();
+    {
+        Node * p = q.front();
         q.pop();
+
+
 
         int l,r;
         cin>>l>>r;
         Node* left;
         Node * right;
-        if(l==-1) left = NULL;
-        else left = new Node(l);
+        if(l==-1) left=NULL;
+        else left=new Node(l);
+
         if(r==-1) right = NULL;
         else right = new Node(r);
 
         p->left = left;
         p->right = right;
+
 
 
         if(p->left) q.push(p->left);
@@ -47,30 +50,16 @@ Node* input_tree()
     }
     return root;
 }
-void left(Node * root)
+int count(Node* root)
 {
-    if(root==NULL) return;
-    if(root->left) left(root->left);
-    else if(root->right) left(root->right);
-    cout<<root->val<<" ";
-}
-void right(Node * root)
-{
-    if(root==NULL) return;
-    cout<<root->val<<" ";
-    if(root->right) right(root->right);
-    else if(root->left) right(root->left);
+    if(root==NULL) return 0;
+    int l = count(root->left);
+    int r = count(root->right);
+    return l+r+1;
 }
 int main()
 {
-
-    Node * root = input_tree();
-    if(root==NULL) return 0;
-    if(root->left) left(root->left);
-    if(root) cout<<root->val<<" ";
-    if(root->right) right(root->right);
-
-    
-
+    Node* root = input_tree();
+    cout<<count(root)<<endl;
     return 0;
 }
