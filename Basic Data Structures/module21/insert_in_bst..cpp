@@ -75,19 +75,43 @@ void level_order(Node * root)
 
     }
 }
-bool search(Node * root, int x)
-{
-    if(root==NULL) return false;
-    if(root->val == x ) return true;
-    if(root->val > x)  return search(root->left,x);
-    else if(root->val < x)   return search(root->right,x);
+void insert(Node * &root,int x)
+{   
+    if(root==NULL)
+    {
+        root= new Node(x);
+        return;
+    }
+    if(root->val>x)
+    {
+        if(root->left == NULL)
+        {
+            root->left = new Node(x);
+        }
+        else 
+        {
+            insert(root->left,x);
+        }
+    }
+    else
+    {
+        if(root->right == NULL)
+        {
+            root->right = new Node(x);
+        }
+        else 
+        {
+            insert(root->right,x);
+        }
+    }
 }
 int main()
 {
     Node * root = input_tree();
     // level_order(root);
-    if(search(root,1)) cout<<"Yes Found" <<endl;
-    else cout<< " No , Not found"<<endl;
+    int x; cin>>x;
+    insert(root,x);
+    level_order(root);
 
     return 0;
 }
@@ -96,3 +120,4 @@ int main()
 
 
 //input 10 5 15 2 6 12 16 -1 3 -1 -1 -1 -1 -1 -1 -1 -1
+// 20 10 30 -1 15 25 35 -1 -1 -1 -1 -1 -1 
