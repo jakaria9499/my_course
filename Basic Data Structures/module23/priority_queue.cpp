@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+ 
 int main()
 {
     // priority_queue<int> pq; // for max heap 
-    priority_queue<int, vector<int>, greater<int>> pq; // for min heap
+    priority_queue<int, vector<int>, greater<int>> pq;// for min heap
     while(true)
     {
         int c;
