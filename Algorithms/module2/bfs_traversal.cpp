@@ -8,7 +8,7 @@ void bfs(int src)
     q.push(src);
     vis[src] = true;
 
-    while(!q.empty())
+    while(!q.empty()) 
     {
         int p = q.front();
         q.pop();
