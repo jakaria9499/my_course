@@ -3,33 +3,32 @@ using namespace std;
 vector<int> v[1005];
 bool vis[1005];
 int level[1005];
-void bfs(int src)
-{
+vector<int> lb;
+void bfs(int l)
+{   
+    int src=0;
     queue<int> q;
     q.push(src);
-    vis[src] = true;
-    level[src] = 0;
+    vis[src]=true;
+    level[src]=0;
     while(!q.empty())
     {
         int p = q.front();
         q.pop();
-
-        // cout<<p<<endl;
-        // for (int i = 0; i < v[p].size(); i++)
-        // {
-        //     int child = v[p][i];
-        //     cout<<child<<endl;
-        // }
-        for(int child :v[p])
+        if(level[p]==l)
         {
-            if(vis[child]==false)
+            lb.push_back(p);
+        }
+
+        for(int child:v[p])
+        {
+            if(!vis[child])
             {
                 q.push(child);
-                vis[child]=true;
                 level[child]=level[p]+1;
+                vis[child]=true;
             }
         }
-        
     }
 }
 int main()
@@ -43,15 +42,17 @@ int main()
         v[a].push_back(b);
         v[b].push_back(a);
     }
-    int src;
-    cin>>src;
     memset(vis,false,sizeof(vis));
-    memset(level, -1, sizeof(level));
-    bfs(src);
-    for (int i = 0; i < n; i++)
+    memset(level,-1,sizeof(level));
+    int l;
+    cin>>l;
+    bfs(l);
+    sort(lb.begin(),lb.end(),greater<int>());
+    for(int ele:lb)
     {
-        cout<< i << " " <<level[i]<<endl;
+        cout<<ele<<" ";
     }
-    
     return 0;
 }
+
+//solved;
