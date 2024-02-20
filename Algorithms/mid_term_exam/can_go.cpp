@@ -1,31 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N = 100;
-vector<pair<int,int>> v[N];
-int dis[N];
+#define ll long long int
+const ll N = 10000000009;
+vector<pair<int,ll>> v[1005];
+ll dis[1005];
 class cmp
 {
     public:
-        bool operator()(pair<int,int> a, pair<int,int> b)
+        bool operator()(pair<int,ll> a, pair<int,ll> b)
         {
             return a.second > b.second;
         }
 };
 void dijkstra(int src)
 {
-    priority_queue<pair<int,int>,vector<pair<int,int>>,cmp> pq;
+    priority_queue<pair<int,ll>,vector<pair<int,ll>>,cmp> pq;
     pq.push({src,0});
     dis[src]=0; 
     while(!pq.empty())
     {
-        pair<int,int> parent = pq.top();
+        pair<int,ll> parent = pq.top();
         pq.pop();
         int node = parent.first;
-        int cost = parent.second;
-        for(pair<int,int> child: v[node])
+        ll cost = parent.second;
+        for(pair<int,ll> child: v[node])
         {
             int childNode = child.first;
-            int childCost = child.second;
+            ll childCost = child.second;
             if(cost + childCost<dis[childNode])
             {
                 dis[childNode]= cost + childCost;
@@ -41,40 +42,26 @@ int main()
     cin>>n>>e;
     while(e--)
     {
-        int a,b,c;
+        int a,b;
+        ll c;
         cin>>a>>b>>c;
         v[a].push_back({b,c});
-        v[b].push_back({a,c});
     }
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i <= n; i++)
     {
-        dis[i]=INT_MAX;
+        dis[i]=1e18;
     }
-    
-    dijkstra(0);
-    for(int i=0;i<n;i++)
+    int s,t;
+    cin>>s>>t;
+    dijkstra(s);
+    while(t--)
     {
-        cout<<i<<" -> "<<dis[i]<<endl;
+        int d;
+        ll w;
+        cin>>d>>w;
+        if(dis[d]<=w) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
     }
+
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-// 5 8
-// 0 1 10
-// 0 2 7
-// 0 3 4
-// 1 4 3
-// 2 4 5
-// 2 1 1
-// 3 4 5
-// 3 2 1
