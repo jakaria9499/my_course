@@ -7,11 +7,12 @@ int main()
     replace(v.begin(),v.end(),2,100);
 
 
-
+    //vector<int>:: iterator it = find(v.begin(),v.end(),3); // aivabei iterator diclare kora jay
+    // cout<<*it<<endl;
     // vector<int>:: iterator it;
-    auto it = find(v.begin(),v.end(),1200);
+    auto it = find(v.begin(),v.end(),1);
     if(it==v.end()) cout<<"not found"<< endl;
-    else cout<< "found"<< endl;
+    else cout<< "found jakaria"<< endl;
 
     for(int x:v)
     {

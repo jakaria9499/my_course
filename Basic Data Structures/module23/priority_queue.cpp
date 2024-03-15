@@ -21,7 +21,12 @@ int main()
         }
         else if(c==2)
         {
-            cout<<pq.top()<<endl; //O(1)
+            while(!pq.empty())
+            {
+                cout<<pq.top()<<" "; //O(1)
+                pq.pop();
+            }
+            
         }
         else
         {

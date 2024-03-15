@@ -15,6 +15,16 @@ int main()
             if(i==j) adj[i][j]=0;
         }
     }
+    // cout<<endl;
+    // for(int i=0;i<n;i++)
+    // {
+    //     for(int j=0;j<n;j++)
+    //     {
+    //         if(adj[i][j]==INT_MAX) cout<<"I ";
+    //         else cout<<adj[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     while(e--)
     {
         int a,b,c;
@@ -38,11 +48,11 @@ int main()
     }
 
 
-    for(int i=0;i<=n;i++)
+    for(int i=0;i<n;i++)
     {
-        for(int j=0;j<=n;j++)
+        for(int j=0;j<n;j++)
         {
-            if(adj[i][j]==INT_MAX) cout<<"Inf";
+            if(adj[i][j]==INT_MAX) cout<<"N";
             else cout<<" "<<adj[i][j]<<" ";
         }
         cout<<endl;
@@ -55,5 +65,14 @@ int main()
     //         cout<<"Cycle detected"<<endl;
     //     }
     // }
+    // cout<<INT_MAX<<endl;
     return 0;
 }
+
+// 4 6
+// 3 2 8
+// 2 1 5
+// 1 0 2
+// 3 0 20
+// 0 1 3
+// 1 2 2

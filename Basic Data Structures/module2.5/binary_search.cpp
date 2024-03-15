@@ -63,7 +63,7 @@ int main()
                 break;
 
             }
-            if(a[mid]>x)
+            if(a[mid]<x)
             {
                 l=mid+1;
             }

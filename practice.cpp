@@ -1,30 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N = 1e5+5;
-int dp[N];
-int height[N];
-int frog(int i)
-{
-    if(i==0) return 0;
-    if(dp[i] != -1) return dp[i];
-    int cost = INT_MAX;
-    cost = min(cost, frog(i-1) + abs(height[i] - height[i-1]));
-    if(i > 1)
-    {
-        cost = min(cost, frog(i-2) + abs(height[i] - height[i-2]));
 
-    }
-    return dp[i]= cost;
-}
 int main()
 {
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++)
+    int t;
+    cin>>t;
+    while(t--)
     {
-        cin>>height[i];
+        int n,k;
+        cin>>n>>k;
+        vector<int> v;
+        for (int i = 1; i <= n; i++)
+        {
+            v.push_back(i);
+            
+        }
+        for (int i = n-2; i >= k; i--)
+        {
+            int x = v[i];
+            v.erase(v.begin()+i);
+            v.push_back(x);
+        }
+        // v.erase(v.begin()+3);
+        for (int i = 0; i < n; i++)
+        {
+            cout<<v[i]<<" ";
+        }
+
+        
+        
     }
-    memset(dp,-1, sizeof(dp));
-    cout<<frog(n-1)<<endl;
+
     return 0;
 }

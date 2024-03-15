@@ -23,7 +23,7 @@ int main()
     int n;
     cin>>n;
     int a[n];
-    // memset(dp,-1,sizeof(dp));
+    memset(dp,-1,sizeof(dp));
     for(int i=0;i<n;i++)
     {
         cin>>a[i];

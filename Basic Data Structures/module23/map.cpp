@@ -14,13 +14,14 @@ int main()
     mp["tamim"] = 76;
     mp["jakaria"] = 50;
 
-    for(auto it= mp.begin(); it != mp.end(); it++)
-    {
-        cout<< it->first << " " << it->second<<endl;
-    }
-    cout<< mp["jakaria"] <<endl; //single akta key value pair print korar jonnno;
+    // for(auto it= mp.begin(); it != mp.end(); it++)
+    // {
+    //     cout<< it->first << " " << it->second<<endl;
+    // }
+    mp["jakari"]+=1;
+    cout<< mp["jakari"] <<endl; //single akta key value pair print korar jonnno;
 
-    if(mp.count("jakaria")) cout<< "ache" <<endl; // aita true false return dei
+    if(mp.count("jakari")) cout<< "ache" <<endl; // aita true false return dei
     else cout<< " nai" << endl;
     return 0;
 }
